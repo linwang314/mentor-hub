@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+    <p th:unless="${mentors} and ${mentors.size()}">No Mentor Has Signed Up Yet!</p>
+    <a href="/mentor/add">Add Mentor</a>
+    <ul>
+        <li th:each="mentor : ${mentors}" th:text="${mentor}"></li>
+    </ul>
+</body>
+</html>

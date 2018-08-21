@@ -6,14 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping(value = "mentor")
 public class HelloMentor {
 
-    static ArrayList<String> mentors = new ArrayList<>();
+    static HashMap<String, String> mentors = new HashMap<>();
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -29,8 +28,8 @@ public class HelloMentor {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddMentorForm(@RequestParam String mentorName) {
-        mentors.add(mentorName);
+    public String processAddMentorForm(@RequestParam String mentorFirstName, @RequestParam String mentorLastName) {
+        mentors.put(mentorFirstName, mentorLastName);
         return "redirect:"; // redirect to /mentor
     }
 }
